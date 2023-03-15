@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/Template.Api/obj
+/Template.Data/obj
+/Template.Services/obj
+/Template.Tests/bin
+/Template.Tests/obj
+/Template.Web/obj/Debug

@@ -1,0 +1,19 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Add Team</h5>
+      <form (ngSubmit)="createTeam()">
+        <div class="form-group">
+          <label for="nameInput">Name</label>
+          <input type="text" class="form-control" id="nameInput" [(ngModel)]="newTeam.name" name="nameInput">
+        </div>
+        <div class="form-group">
+          <label for="descriptionInput">Description</label>
+          <input type="text" class="form-control" id="descriptionInput" [(ngModel)]="newTeam.description" name="descriptionInput">
+        </div>
+        <button type="submit" class="btn btn-primary mr-2">Create</button>
+        <button type="button" class="btn btn-secondary mr-2" (click)="goBack()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>

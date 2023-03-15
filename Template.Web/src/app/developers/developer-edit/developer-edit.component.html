@@ -1,0 +1,33 @@
+<div class="container py-3">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Edit Developer</h5>
+      <form (ngSubmit)="saveDeveloper()">
+        <div class="form-group">
+          <label for="nameInput">First Name</label>
+          <input type="text" class="form-control" id="firstNameInput" [(ngModel)]="developer.firstName" name="firstNameInput">
+        </div>
+        <div class="form-group">
+          <label for="lastNameInput">Last Name</label>
+          <input type="text" class="form-control" id="lastNameInput" [(ngModel)]="developer.lastName" name="lastNameInput">
+        </div>
+        <div class="form-group">
+          <label for="emailInput">Email</label>
+          <input type="text" class="form-control" id="emailInput" [(ngModel)]="developer.email" name="emailInput">
+        </div>
+        <div class="form-group">
+          <label for="dateOfBirth">Birth Date</label>
+          <input id="dateOfBirth" type="datetime-local" class="form-control" bsDatepicker [(ngModel)]="developer.dateOfBirth" name="dateOfBirthInput">
+        </div>
+        <div class="form-group">
+          <label for="team">Team</label>
+          <select [(ngModel)]="developer.teamId" name="team" id="team" class="form-control">
+            <option *ngFor="let team of teams" [value]="team.id">{{team.name}}</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary mr-2">Save</button>
+        <button type="button" class="btn btn-secondary mr-2" (click)="goBack()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>

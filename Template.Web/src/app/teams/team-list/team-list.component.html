@@ -1,0 +1,36 @@
+<div class="container py-3">
+
+  <h2>Teams</h2>
+
+  <button (click)="createTeam()" class="btn btn-primary">
+    <i class="fa fa-plus"></i>
+    Add Team
+  </button>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of teams | paginate: { itemsPerPage: 5, currentPage: currentPage, totalItems: totalItems }">
+        <td>{{ team.id }}</td>
+        <td>{{ team.name }}</td>
+        <td>{{ team.description }}</td>
+        <td>
+          <div class="pull-right">
+            <button class="btn btn-sm btn-icon btn-info mx-3" (click)="updateTeam(team.id)"><i class="fa fa-edit"></i></button>
+            <button class="btn btn-sm btn-icon btn-danger" (click)="deleteTeam(team.id)"><i class="fa fa-trash"></i></button>
+            <app-confirmation-modal (confirmed)="onDeleteConfirmed($event, team.id)"></app-confirmation-modal>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
+</div>

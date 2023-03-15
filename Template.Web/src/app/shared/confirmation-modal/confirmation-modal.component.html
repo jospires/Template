@@ -1,0 +1,14 @@
+<div class="confirmation-modal" *ngIf="isVisible">
+  <div class="modal-content">
+    <div class="modal-header">
+      
+    </div>
+    <div class="modal-body">
+      <p>{{message}}</p>
+    </div>
+    <div class="modal-footer">
+      <button (click)="confirm(true)">Yes</button>
+      <button (click)="confirm(false)">No</button>
+    </div>
+  </div>
+</div>

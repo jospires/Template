@@ -1,0 +1,44 @@
+<div class="container py-3">
+
+  <h2>Projects</h2>
+
+  <button (click)="createProject()" class="btn btn-primary">
+    <i class="fa fa-plus"></i>
+    Add Project
+  </button>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Start Date</th>
+        <th>Expected End Date</th>
+        <th>End Date</th>
+        <th>Team</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projects | paginate: { itemsPerPage: 5, currentPage: currentPage, totalItems: totalItems }">
+        <td>{{ project.id }}</td>
+        <td>{{ project.name }}</td>
+        <td>{{ project.description }}</td>
+        <td>{{ project.startDate | date:'YYYY/MM/dd HH:mm'  }}</td>
+        <td>{{ project.expectedEndDate  | date:'YYYY/MM/dd HH:mm' }}</td>
+        <td>{{ project.endDate | date:'YYYY/MM/dd HH:mm'  }}</td>
+        <td>{{ project.team?.name }}</td>
+        <td>
+          <div class="pull-right">
+            <button class="btn btn-sm btn-icon btn-info mx-3" (click)="updateProject(project.id)"><i class="fa fa-edit"></i></button>
+            <button class="btn btn-sm btn-icon btn-danger" (click)="deleteProject(project.id)"><i class="fa fa-trash"></i></button>
+            <app-confirmation-modal (confirmed)="onDeleteConfirmed($event, project.id)"></app-confirmation-modal>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
+</div>
